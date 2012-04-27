@@ -1,0 +1,130 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXFileReference section */
+		183267E1154B469B00517538 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = client.cpp; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/client.cpp; sourceTree = "<absolute>"; };
+		183267E2154B469B00517538 /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = client.h; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/client.h; sourceTree = "<absolute>"; };
+		183267E6154B469B00517538 /* N7Xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = N7Xml.cpp; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/N7Xml.cpp; sourceTree = "<absolute>"; };
+		183267E7154B469B00517538 /* N7Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = N7Xml.h; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/N7Xml.h; sourceTree = "<absolute>"; };
+		183267F7154B470C00517538 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/Makefile; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		183267CD154B45C300517538 = {
+			isa = PBXGroup;
+			children = (
+				183267F7154B470C00517538 /* Makefile */,
+				183267E1154B469B00517538 /* client.cpp */,
+				183267E2154B469B00517538 /* client.h */,
+				183267E6154B469B00517538 /* N7Xml.cpp */,
+				183267E7154B469B00517538 /* N7Xml.h */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		183267DB154B461100517538 /* XBMC_Njoy.pvr */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 183267DE154B461E00517538 /* Build configuration list for PBXLegacyTarget "XBMC_Njoy.pvr" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy;
+			dependencies = (
+			);
+			name = XBMC_Njoy.pvr;
+			passBuildSettingsInEnvironment = 1;
+			productName = XBMC_Njoy.pvr;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		183267CF154B45C300517538 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 183267D2154B45C300517538 /* Build configuration list for PBXProject "njoyPVR" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 183267CD154B45C300517538;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				183267DB154B461100517538 /* XBMC_Njoy.pvr */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		183267D0154B45C300517538 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		183267D1154B45C300517538 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Release;
+		};
+		183267DC154B461200517538 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = XBMC_Njoy.pvr;
+			};
+			name = Debug;
+		};
+		183267DD154B461200517538 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = XBMC_Njoy.pvr;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		183267D2154B45C300517538 /* Build configuration list for PBXProject "njoyPVR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				183267D0154B45C300517538 /* Debug */,
+				183267D1154B45C300517538 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		183267DE154B461E00517538 /* Build configuration list for PBXLegacyTarget "XBMC_Njoy.pvr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				183267DC154B461200517538 /* Debug */,
+				183267DD154B461200517538 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 183267CF154B45C300517538 /* Project object */;
+}
