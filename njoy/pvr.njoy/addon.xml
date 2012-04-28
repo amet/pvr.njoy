@@ -6,11 +6,12 @@
   provider-name="amet">
   <extension
     point="xbmc.pvrclient"
-    library_osx="XBMC_Njoy.pvr"/>
+    library_osx="XBMC_Njoy.pvr"
+    library_linux="XBMC_Njoy.pvr"/>
   <extension point="xbmc.addon.metadata">
     <summary></summary>
     <description></description>
-    <platform>osx</platform>
+    <platform>linux osx</platform>
   </extension>
 </addon>
 
