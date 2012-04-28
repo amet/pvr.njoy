@@ -34,6 +34,7 @@ public:
   void list_channels(void);
 private:
   std::vector<PVRChannel> m_channels;
+  bool m_connected;
 
 };
 

@@ -14,6 +14,7 @@ using namespace XFILE;
 N7Xml::N7Xml(void)
 {
   list_channels();
+  bool m_connected = false;
 }
 
 N7Xml::~N7Xml(void)
@@ -39,66 +40,79 @@ void N7Xml::list_channels()
   {
     CLog::Log(LOGDEBUG, "N7Xml - Could not open connection to N7 backend.");
   }
-  http.Cancel();
-	TiXmlDocument xml;
-	xml.Parse(strXML.c_str());
-  
-	TiXmlElement* rootXmlNode = xml.RootElement();
-  TiXmlElement* channelsNode = rootXmlNode->FirstChildElement("channel");
-  if (channelsNode)
+  else
   {
-    int iUniqueChannelId = 0;
-    TiXmlNode *pChannelNode = NULL;
-    while ((pChannelNode = channelsNode->IterateChildren(pChannelNode)) != NULL)
-    {  
-      CStdString strTmp;
-      PVRChannel channel;
-      
-      /* unique ID */
-      channel.iUniqueId = ++iUniqueChannelId;
-      
-      /* channel number */
-      if (!XMLUtils::GetInt(pChannelNode, "number", channel.iChannelNumber))
-        channel.iChannelNumber = channel.iUniqueId;
-      
-      /* channel name */
-      if (!XMLUtils::GetString(pChannelNode, "title", strTmp))
-        continue;
-      channel.strChannelName = strTmp;
-      
-      /* icon path */
-      const TiXmlElement* pElement = pChannelNode->FirstChildElement("media:thumbnail");
-      channel.strIconPath = pElement->Attribute("url");
-      
-      /* channel url */
-      if (!XMLUtils::GetString(pChannelNode, "guid", strTmp))
-        channel.strStreamURL = "";
-      else
-        channel.strStreamURL = strTmp;
-      
-      m_channels.push_back(channel);
-    }
+    m_connected = true;
+    CLog::Log(LOGDEBUG, "N7Xml - Connected to N7 backend.");    
+    TiXmlDocument xml;
+    xml.Parse(strXML.c_str());
+    TiXmlElement* rootXmlNode = xml.RootElement();
+    TiXmlElement* channelsNode = rootXmlNode->FirstChildElement("channel");
+    if (channelsNode)
+    {
+      int iUniqueChannelId = 0;
+      TiXmlNode *pChannelNode = NULL;
+      while ((pChannelNode = channelsNode->IterateChildren(pChannelNode)) != NULL)
+      {  
+        CStdString strTmp;
+        PVRChannel channel;
+        
+        /* unique ID */
+        channel.iUniqueId = ++iUniqueChannelId;
+        
+        /* channel number */
+        if (!XMLUtils::GetInt(pChannelNode, "number", channel.iChannelNumber))
+          channel.iChannelNumber = channel.iUniqueId;
+        
+        /* channel name */
+        if (!XMLUtils::GetString(pChannelNode, "title", strTmp))
+          continue;
+        channel.strChannelName = strTmp;
+        
+        /* icon path */
+        const TiXmlElement* pElement = pChannelNode->FirstChildElement("media:thumbnail");
+        channel.strIconPath = pElement->Attribute("url");
+        
+        /* channel url */
+        if (!XMLUtils::GetString(pChannelNode, "guid", strTmp))
+          channel.strStreamURL = "";
+        else
+          channel.strStreamURL = strTmp;
+        
+        m_channels.push_back(channel);
+      }
+    }  
   }
 }
 
 
-PVR_ERROR N7Xml::requestChannelList(PVR_HANDLE handle, bool bRadio){
-  std::vector<PVRChannel>::const_iterator item;
-	PVR_CHANNEL tag;
-	for( item = m_channels.begin(); item != m_channels.end(); ++item)
-  {
-	  const PVRChannel& ch = *item; 
-	  memset(&tag, 0 , sizeof(tag));
-	  tag.iUniqueId       = ch.iUniqueId;
-	  tag.iChannelNumber  = ch.iChannelNumber;
-	  tag.strChannelName  = ch.strChannelName.c_str();
-	  tag.bIsRadio        = false;
-	  tag.strInputFormat  = "";
-	  tag.strStreamURL    = ch.strStreamURL.c_str();
-    tag.strIconPath     = ch.strIconPath.c_str();
-    tag.bIsHidden       = false;
-	  PVR->TransferChannelEntry(handle, &tag);   
+PVR_ERROR N7Xml::requestChannelList(PVR_HANDLE handle, bool bRadio)
+{
+  if (m_connected)
+  {  
+    std::vector<PVRChannel>::const_iterator item;
+    PVR_CHANNEL tag;
+    for( item = m_channels.begin(); item != m_channels.end(); ++item)
+    {
+      const PVRChannel& ch = *item; 
+      memset(&tag, 0 , sizeof(tag));
+      tag.iUniqueId       = ch.iUniqueId;
+      tag.iChannelNumber  = ch.iChannelNumber;
+      tag.strChannelName  = ch.strChannelName.c_str();
+      tag.bIsRadio        = false;
+      tag.strInputFormat  = "";
+      tag.strStreamURL    = ch.strStreamURL.c_str();
+      tag.strIconPath     = ch.strIconPath.c_str();
+      tag.bIsHidden       = false;
+      CLog::Log(LOGDEBUG, "N7Xml - Loaded channel - %s.", tag.strChannelName);
+      PVR->TransferChannelEntry(handle, &tag);   
+    }
   }
+  else
+  {
+    CLog::Log(LOGDEBUG, "N7Xml - no channels loaded");
+  }
+
 	return PVR_ERROR_NO_ERROR;
 }
 

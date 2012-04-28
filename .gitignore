@@ -12,3 +12,6 @@
 *.a
 
 *.DS_Store
+*.P
+*.pbxuser
+*.mode1v3
