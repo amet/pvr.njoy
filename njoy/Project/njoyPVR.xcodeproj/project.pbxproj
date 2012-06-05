@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		183267E1154B469B00517538 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = client.cpp; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/client.cpp; sourceTree = "<absolute>"; };
-		183267E2154B469B00517538 /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = client.h; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/client.h; sourceTree = "<absolute>"; };
-		183267E6154B469B00517538 /* N7Xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = N7Xml.cpp; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/N7Xml.cpp; sourceTree = "<absolute>"; };
-		183267E7154B469B00517538 /* N7Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = N7Xml.h; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/N7Xml.h; sourceTree = "<absolute>"; };
-		183267F7154B470C00517538 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy/Makefile; sourceTree = "<absolute>"; };
+		183267E1154B469B00517538 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = client.cpp; path = ../client.cpp; sourceTree = SOURCE_ROOT; };
+		183267E2154B469B00517538 /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = client.h; path = ../client.h; sourceTree = SOURCE_ROOT; };
+		183267E6154B469B00517538 /* N7Xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = N7Xml.cpp; path = ../N7Xml.cpp; sourceTree = SOURCE_ROOT; };
+		183267E7154B469B00517538 /* N7Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = N7Xml.h; path = ../N7Xml.h; sourceTree = SOURCE_ROOT; };
+		183267F7154B470C00517538 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../Makefile; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -36,7 +36,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Volumes/xbmc/xbmc_osx/xbmc/pvrclients/njoy;
+			buildWorkingDirectory = "$(SRCROOT)/..";
 			dependencies = (
 			);
 			name = XBMC_Njoy.pvr;

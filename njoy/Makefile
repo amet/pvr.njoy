@@ -5,17 +5,17 @@
 
 LIBS   = -ldl
 LIBDIR = pvr.njoy
-LIB    = pvr.njoy/XBMC_Njoy.pvr
+PVR    = pvr.njoy/XBMC_Njoy.pvr
+CLEAN_FILES = *.P *~ $(PVR)
+
+pvr: $(PVR)
 
 SRCS=client.cpp \
       N7Xml.cpp
 
 include ../Makefile.include 
 
-clean:
-	-rm -f $(OBJS) $(LIB) *.P *~
-
 INCLUDES += -I../xbmc
 
-$(LIB): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -g $(OBJS) $(LIBS) $(LIBDIRS) $(SILIB) -o $(LIB)
+$(PVR): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -g $(OBJS) $(LIBS) $(LIBDIRS) $(SILIB) -o $(PVR)

@@ -1,9 +1,9 @@
 
 
 #include "N7Xml.h"
-#include "filesystem/FileCurl.h"
+#include "filesystem/CurlFile.h"
 #include "utils/log.h"
-#include "tinyXML/tinyxml.h"
+#include "utils/XBMCTinyXML.h"
 #include "utils/RegExp.h"
 #include "utils/XMLUtils.h"
 
@@ -14,7 +14,6 @@ using namespace XFILE;
 N7Xml::N7Xml(void)
 {
   list_channels();
-  bool m_connected = false;
 }
 
 N7Xml::~N7Xml(void)
@@ -33,11 +32,12 @@ void N7Xml::list_channels()
   strUrl.Format("http://%s:%i/n7channel_nt.xml", g_strHostname.c_str(), g_iPort);
   CStdString strXML;
   
-  CFileCurl http;
+  CCurlFile http;
   
   http.SetTimeout(5);
   if(!http.Get(strUrl, strXML))
   {
+    m_connected = false;
     CLog::Log(LOGDEBUG, "N7Xml - Could not open connection to N7 backend.");
   }
   else
